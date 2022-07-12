@@ -22,10 +22,12 @@ const Home: NextPage = () => {
             <Image alt="Futsal House - Cover photo" src="/images/cover.png" width="1440px" height="660px" layout="responsive"/>
           </div>
 	  <div className="relative flex justify-center items-center">
-	    <Image alt="Futsal House - Stadium Grahpic" src="/images/hero_graphic.png" width={"770"} height={"580"} quality={100}/>
+	    <Image alt="Futsal House - Stadium Graphic" src="/images/hero_graphic.png" width={"770"} height={"580"} quality={100}/>
 	    <button className="absolute h-14 px-40 mt-40 bg-green-500 rounded-md shadow-2xl border-b-2 border-b-emerald-800 hover:bg-green-600 hover:scale-105 transition-all">
 	      <p className="font-bold text-3xl text-white"> BOOK NOW </p>
             </button>
+          </div>
+	  <div className="flex">
           </div>
         </div>
         

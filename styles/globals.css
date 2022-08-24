@@ -9,6 +9,29 @@
     font-family: Poppins, Segoe UI;
 }
 
+*::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar
+{
+    width: 4px;
+    background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb
+{
+    background-color: #FFF;
+    background-image: -webkit-gradient(linear,
+				       40% 0%,
+				       75% 84%,
+				       from(#4D9C41),
+				       to(#19911D),
+				       color-stop(.6,#54DE5D))
+}
+
 /* html, */
 /* body { */
 /*   padding: 0; */

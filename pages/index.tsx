@@ -5,6 +5,7 @@ import FutsalCenterCard, {
   FutsalCenterType,
 } from "../components/FutsalCenterCard";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   const testFutsal: FutsalCenterType = {
@@ -35,19 +36,34 @@ const Home: NextPage = () => {
               src="/images/cover.png"
               width="1440px"
               height="660px"
-              layout="responsive"
+              layout="fill"
               quality={100}
             />
           </div>
           <Hero />
         </div>
 
-        <div className="flex ">
-          <FutsalCenterCard futsal={testFutsal} />
+	<div className="mt-36 py-2 px-10">
+	  <h3 className="text-[#14D045] text-xl font-semibold mb-5"> Nearest Fields </h3>
+          <div className="w-full flex flex-wrap justify-between gap-6">
+            <FutsalCenterCard futsal={testFutsal} />
+            <FutsalCenterCard futsal={testFutsal} />
+            <FutsalCenterCard futsal={testFutsal} />          
+          </div>          
         </div>
+
+	<div className="mt-10 py-2 px-10 bg-[#20C980]">
+	  <h3 className="text-white text-xl font-semibold mb-5"> Popular Fields </h3>
+          <div className="w-full flex flex-wrap justify-between gap-6">
+            <FutsalCenterCard futsal={testFutsal} />
+            <FutsalCenterCard futsal={testFutsal} />
+            <FutsalCenterCard futsal={testFutsal} />          
+          </div>          
+        </div>        
+
       </main>
 
-      <footer className=""></footer>
+      <Footer/>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 
 interface propsTypes {
-  children: string
+  children: string | JSX.Element
 };
 
 

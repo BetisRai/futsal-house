@@ -1,7 +1,12 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import Button from '../Button';
 
+import { useUser } from '@auth0/nextjs-auth0';
+
 export default function Navbar(): JSX.Element {
+
+  const { user, error, isLoading } = useUser();
 
   return (
     <nav className="w-full flex justify-between items-center px-40 py-5">
@@ -30,8 +35,17 @@ export default function Navbar(): JSX.Element {
       </ul>
 
       <div className="flex gap-8">
-	<Button> Login </Button>
-	<Button> Register </Button>        
+	{isLoading && <div> Loading... </div>}
+	{error && <div> { error.message } </div>}
+	    <Button>
+              <>
+	        {user && <p> { user.name }</p>}
+                {!user && <Link href={"/api/auth/login"}> Login </Link> }
+              </>
+            </Button>
+	    <Button>
+              <Link href={"/api/auth/logout"}> Logout </Link>
+            </Button>
       </div>
     </nav>
   );

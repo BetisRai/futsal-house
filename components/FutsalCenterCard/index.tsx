@@ -41,9 +41,9 @@ export default function FutsalCenterCard(props: FutsalCardProps): JSX.Element {
 const FieldSvg = () => (
   <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="27" height="27" fill="white"/>
-    <rect x="4.08569" y="4.08569" width="18.8286" height="18.8286" rx="4" stroke="#14D045" stroke-width="2"/>
-    <path d="M18.5319 13.7687C18.5319 16.5478 16.279 18.8006 13.5 18.8006C10.7209 18.8006 8.46808 16.5478 8.46808 13.7687C8.46808 10.9897 10.7209 8.73681 13.5 8.73681C16.279 8.73681 18.5319 10.9897 18.5319 13.7687Z" stroke="#14D045" stroke-width="2"/>
-    <line x1="3.85712" y1="13.6572" x2="23.1428" y2="13.6572" stroke="#14D045" stroke-width="2"/>
+    <rect x="4.08569" y="4.08569" width="18.8286" height="18.8286" rx="4" stroke="#14D045" strokeWidth="2"/>
+    <path d="M18.5319 13.7687C18.5319 16.5478 16.279 18.8006 13.5 18.8006C10.7209 18.8006 8.46808 16.5478 8.46808 13.7687C8.46808 10.9897 10.7209 8.73681 13.5 8.73681C16.279 8.73681 18.5319 10.9897 18.5319 13.7687Z" stroke="#14D045" strokeWidth="2"/>
+    <line x1="3.85712" y1="13.6572" x2="23.1428" y2="13.6572" stroke="#14D045" strokeWidth="2"/>
   </svg>);
 
 const StarSvg = () => (

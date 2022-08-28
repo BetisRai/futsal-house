@@ -1,6 +1,6 @@
 ## Futsal House
 <p align="center">
-	<img alt="" src="public/landing_demo.png" width="70%"/>
+	<img alt="" src="public/landing_demo.png" width="70%" height="40%"/>
 </p>
 
 Futsal House, online Booking, Matching, Competing site for Futsal Players and Centres.

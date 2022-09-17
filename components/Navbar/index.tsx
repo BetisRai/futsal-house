@@ -1,11 +1,15 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import Button from '../Button';
+import Link from "next/link";
+import Image from "next/image";
+import Button from "../Button";
+import LinkItem from "./LinkItem";
 
-import { useUser } from '@auth0/nextjs-auth0';
+import { useUser } from "@auth0/nextjs-auth0";
 
-export default function Navbar(): JSX.Element {
+interface NavbarProps {
+    path: string
+}
 
+export default function Navbar(props: NavbarProps): JSX.Element {
   const { user, error, isLoading } = useUser();
 
   return (
@@ -20,32 +24,24 @@ export default function Navbar(): JSX.Element {
         />
       </div>
       <ul className="flex justify-between gap-8">
-        <li className="px-4 text-lg font-medium text-white border-b-2 border-b-transparent hover:border-b-white hover:scale-105 transition-all">
-          <a href="#"> Home </a>
-        </li>
-        <li className="px-4 text-lg font-medium text-white border-b-2 border-b-transparent hover:border-b-white hover:scale-105 transition-all">
-          <a href="#"> Futsal </a>
-        </li>
-        <li className="px-4 text-lg font-medium text-white border-b-2 border-b-transparent hover:border-b-white hover:scale-105 transition-all">
-          <a href="#"> About </a>
-        </li>
-        <li className="px-4 text-lg font-medium text-white border-b-2 border-b-transparent hover:border-b-white hover:scale-105 transition-all">
-          <a href="#"> Contact </a>
-        </li>
+        <LinkItem path={props.path} href="/"> Home </LinkItem>
+        <LinkItem path={props.path} href="/futsal"> Futsal </LinkItem>                
+        <LinkItem path={props.path} href="/about"> About </LinkItem>
+        <LinkItem path={props.path} href="/contact"> Contact </LinkItem>                
       </ul>
 
       <div className="flex gap-8">
-	{isLoading && <div> Loading... </div>}
-	{error && <div> { error.message } </div>}
-	    <Button>
-              <>
-	        {user && <p> { user.name }</p>}
-                {!user && <Link href={"/api/auth/login"}> Login </Link> }
-              </>
-            </Button>
-	    <Button>
-              <Link href={"/api/auth/logout"}> Logout </Link>
-            </Button>
+        {isLoading && <div> Loading... </div>}
+        {error && <div> {error.message} </div>}
+        <Button>
+          <>
+            {user && <p> {user.name}</p>}
+            {!user && <Link href={"/api/auth/login"}> Login </Link>}
+          </>
+        </Button>
+        <Button>
+          <Link href={"/api/auth/logout"}> Logout </Link>
+        </Button>
       </div>
     </nav>
   );

@@ -29,7 +29,7 @@ const Home: NextPage = () => {
 
       <main className="">
         <div className="relative">
-          <Navbar />
+          <Navbar path='/'/>
           <div className="w-full h-full absolute top-0 -z-10 backdrop-blur-lg">
             <Image
               alt="Futsal House - Cover photo"

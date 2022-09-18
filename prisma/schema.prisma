@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  firstName   String
+  lastName    String
+  email       String
+  phoneNumber String
+  state       String
+  city        String
+  location    String
+  reviews     Review[]
+  createdAt   DateTime
+  updatedAt   DateTime
+  Comment     Comment[]
+  Reservation Reservation[]
+}
+
+model FutsalCenter {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  description  String
+  medias       Media[]
+  state        String
+  city         String
+  location     String
+  price        Int
+  comments     Comment[]
+  reviews      Review[]
+  reservations Reservation[]
+  createdAt    DateTime
+  updatedAt    DateTime
+}
+
+model Media {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  mediaType      MediaType
+  fileType       String
+  fileLocation   String
+  createdAt      DateTime
+  updatedAt      DateTime
+  FutsalCenter   FutsalCenter? @relation(fields: [futsalCenterId], references: [id])
+  futsalCenterId String?       @db.ObjectId
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+}
+
+model Comment {
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  user            User          @relation(fields: [userId], references: [id])
+  content         String
+  parentCommentId String?       @db.ObjectId
+  parentComment   Comment?      @relation("CommentReplies", fields: [parentCommentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  replies         Comment[]     @relation("CommentReplies")
+  createdAt       DateTime
+  updatedAt       DateTime
+  FutsalCenter    FutsalCenter? @relation(fields: [futsalCenterId], references: [id])
+  futsalCenterId  String?       @db.ObjectId
+  userId          String        @db.ObjectId
+}
+
+model Review {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  user           User          @relation(fields: [userId], references: [id])
+  title          String
+  details        String
+  ratings        Rating[]
+  createdAt      DateTime
+  updatedAt      DateTime
+  FutsalCenter   FutsalCenter? @relation(fields: [futsalCenterId], references: [id])
+  futsalCenterId String?       @db.ObjectId
+  userId         String        @db.ObjectId
+}
+
+model Rating {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  details   String
+  rate      Float
+  createdAt DateTime
+  updatedAt DateTime
+  Review    Review?  @relation(fields: [reviewId], references: [id])
+  reviewId  String?  @db.ObjectId
+}
+
+model Reservation {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  futsalCenter   FutsalCenter @relation(fields: [futsalCenterId], references: [id])
+  user           User         @relation(fields: [userId], references: [id])
+  reserveDate    DateTime
+  createdAt      DateTime
+  updatedAt      DateTime
+  futsalCenterId String       @db.ObjectId
+  userId         String       @db.ObjectId
+}
+
+enum ReservationStatus {
+  PENDING
+  ADVANCED
+  RESERVED
+  COMPLETE
+}
